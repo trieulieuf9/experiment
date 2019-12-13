@@ -1,0 +1,8 @@
+MINE TYPE Sniffing
+
+Scenario: When a website allows you to upload files to their server, and serve it back in the same domain (they don't seperate image server domain and main domain)
+
+- If file has extension, then browser will open that file base on it, for example, file.html, file.png will be open as html, image respectively
+- If file DOESN'T have extension, then browser will try to read the file and determines the extension to open it. 
+So if browser try to open "file" without extension with content <html><script>alert(1)</script></html>, then browser will read the file, see html code inside.
+Then treat it as HTML extension, then the js execute.
