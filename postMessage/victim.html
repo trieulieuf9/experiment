@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>index1</title>
+</head>
+<body>
+    <script>
+        window.addEventListener( "message",
+          function (event) {
+          		console.log(event.origin);
+                if (event.origin !== 'http://localhost:8000') { 
+                	return; 
+                } 
+                alert(event.data + document.domain);
+          },
+          false);
+    </script>
+</body>
+</html>

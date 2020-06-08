@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>index2</title>
+	<script type="text/javascript">
+		// var popup = window.open('index1.html');
+		// console.log(popup);
+		// function post() {
+		// 	console.log("posting");
+		// 	popup.postMessage("hi","*");
+		// }
+		// post();
+	</script>
+</head>
+<body>
+	hello, this is some text
+	<script type="text/javascript">
+		top.postMessage('hello', 'http://localhost:8000');
+	</script>
+</body>
+</html>

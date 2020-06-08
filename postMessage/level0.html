@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>level 0</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var token ="super_secret_token";
+		function receiveMessage(event) {
+			event.source.postMessage(token, event.origin);
+		}
+		window.addEventListener("message", receiveMessage, false);
+	</script>
+
+</body>
+</html>

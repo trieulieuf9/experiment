@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>level 1</title>
+</head>
+<body>
+	<script type="text/javascript">
+		var token ="super_secret_token";
+		function receiveMessage(event) {
+			if (/^(?:https?:)?\/\/www.target.com/i.test(event.origin)) {
+				event.source.postMessage(token, event.origin);
+			}
+		}
+		window.addEventListener("message", receiveMessage, false);
+	</script>
+</body>
+</html>

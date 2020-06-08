@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>index1</title>
+</head>
+<body>
+	<iframe src="http://localhost:8000/index2.html"></iframe>
+    <script>
+        window.addEventListener( "message",
+          function (event) {
+          		console.log(event.origin);
+                if (event.origin !== 'http://localhost:8000') { 
+                	return; 
+                } 
+                alert(event.data);
+          },
+          false);
+    </script>
+</body>
+</html>
