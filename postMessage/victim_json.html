@@ -12,7 +12,7 @@
                 	return; 
                 } 
                 alert(event.data);
-                console.log("event.data", event.data);
+                console.log("event.data", JSON.parse(event.data));
                 console.log("document.domain", document.domain);
                 console.log("event.origin", event.origin);
                 console.log("event.source", event.source);

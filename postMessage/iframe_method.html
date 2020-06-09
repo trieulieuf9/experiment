@@ -7,9 +7,10 @@
 	<script>
 		function frameLoaded() {
 			var iframe = document.getElementById('iframe');
-			iframe.contentWindow.postMessage("Congratulation dude !!", '*');
+			// iframe.contentWindow.postMessage("Congratulation dude !!", '*');
+			iframe.contentWindow.postMessage(JSON.stringify({"Congratulation": "dude"}), '*');
 		};
 </script>
-<iframe id="iframe" src="http://localhost:8000/victim.html" onload="frameLoaded(this)"></iframe>
+<iframe id="iframe" src="http://localhost:8000/victim_json.html" onload="frameLoaded(this)"></iframe>
 </body>
 </html>
