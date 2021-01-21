@@ -2,12 +2,59 @@ from flask import Flask
 from flask import Response
 from flask import request
 from flask import render_template
+from os import listdir
+from os import path
+
 app = Flask(__name__)
 
 
 @app.route('/')
 def hello_world():
     return render_template('index.html')
+
+
+# Content-Type: text/plain; charset=UTF-8
+
+# listing all available webhooks
+@app.route('/webhooks')
+def webhooks():
+    response = ""
+    for filename in listdir("webhook_templates"):
+        response += '<a href="/webhook/{}">{}</a><br><br>'.format(filename, filename)
+
+    return response
+
+
+# response with headers and body specified in requested filename
+@app.route('/webhook/<filename>')
+def webhook_response(filename):
+    file_path = path.join("webhook_templates", filename)
+    response = Response()
+    read_header = False
+    read_body = False
+    body = ""
+    with open(file_path) as webhook_template:
+        for line in webhook_template:
+            line_stripped = line.strip()
+            if line_stripped == "--- HEADER ---":
+                read_header = True
+                continue
+            elif line_stripped == "--- BODY ---":
+                read_header = False
+                read_body = True
+                continue
+
+            if read_header and line_stripped != "":
+                header = line_stripped.split(":")
+                response.headers[header[0]] = header[1]
+
+            if read_body:
+                body += line
+
+    print("HELLO: ", body)
+
+    response.set_data(body)
+    return response
 
 
 @app.route('/referrer')
