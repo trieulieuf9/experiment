@@ -36,6 +36,9 @@ def webhook_response(filename):
     with open(file_path) as webhook_template:
         for line in webhook_template:
             line_stripped = line.strip()
+            if line_stripped.startswith("//"):
+                continue
+
             if line_stripped == "--- HEADER ---":
                 read_header = True
                 continue
