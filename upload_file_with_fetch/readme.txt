@@ -1,0 +1,1 @@
+- It is very hard to make a POST multipart CSRF with xmlhttprequest. But fetch supports it.
