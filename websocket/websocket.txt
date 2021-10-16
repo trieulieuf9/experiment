@@ -1,0 +1,25 @@
+var webSocket = new WebSocket('wss://ac581fed1ebe1420c0ec07e500ec0076.web-security-academy.net/chat');
+
+webSocket.onopen = function (evt) {
+    webSocket.send("READY");
+};
+
+webSocket.onmessage = function (evt) {
+    var message = evt.data;
+    console.log("Server: ", message);
+};
+
+webSocket.onclose = function (evt) {
+    console.log("DISCONNECTED:", "-- Chat has ended --");
+};
+
+function send(value) {
+    var object = {};
+    object["message"] = value;
+    webSocket.send(JSON.stringify(object));
+}
+
+---
+Interesting Fact
+- When make websocket handshake request. Chrome DevTool Network tab doesn't show cookie header in request, although it actually sends cookie along with request.
++ see pic 1 & 2 (the same request see through ZAP and DevTool)
