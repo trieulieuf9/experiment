@@ -1,0 +1,2 @@
+- Serving billion_laugh inside iframe will also crash browser
+- Serving svg from iframe will let it activate XSS. EX: <iframe src="xss.svg">
