@@ -41,6 +41,15 @@ hello_dude
     </script>
     """
 
+
+def create_folder(path):
+    from pathlib import Path
+    """
+    Create folder if not exist
+    """
+    Path(path).mkdir(parents=True, exist_ok=True)
+
+
 @app.route('/upload', methods=['POST'])
 def upload_file():
     file = request.files['file']
@@ -53,7 +62,8 @@ def upload_file():
     if file:
         filename = file.filename
         # filename = secure_filename(file.filename)
-        file.save(f"upload/{filename}")
+        create_folder("temp/")
+        file.save(f"temp/{filename}")
         return f"uploaded: ${filename}"
 
     return "hee"

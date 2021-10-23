@@ -1,1 +1,0 @@
-You can use <link rel=import href="whatever.txt"> to import any files content into html. If the thing you import is <script>alert(1)</script>, it will execute as well
