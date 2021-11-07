@@ -1,0 +1,8 @@
+- When testing for path traversal in URL path.
++ Browser, curl, or even Firefox Edit & Resend will normalize url path before sending
++++ Ex: domain.com/hello/../../dude will be sent as domain.com/hello/dude
++ However, browser will not normalize URL encoded path
++++ domain.com/hello/..%2F..%2Fdude will be sent as is
++++ Then many backend framework will perform URL decode on this path.
++++ Ex: domain.com/hello/..%2F..%2F/dude will be decoded on backend as domain.com/hello/../../dude
++ Burp won't normalize anything though, if we want to be sure, test with Burp

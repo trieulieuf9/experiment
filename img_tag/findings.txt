@@ -1,0 +1,4 @@
+- <img> tag auto sniff file
++ it can detect jpg file without file extension.
++ it cannot detect svg, see it as plain/text or something
++ we cannot fool <img> to parse svg as image by adding JPG magic bytes, because SVG requires it <?xml character in beginning of the file
