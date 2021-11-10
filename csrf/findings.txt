@@ -1,0 +1,2 @@
+- iframe request is not top-level request, therefore, it will not send lax cookie along with cross-site request
+- Can only set SameSite=None cookie with Secure attribute. And Secure cookie can only be set in https context
